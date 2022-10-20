@@ -18,6 +18,9 @@
 
     // We have to create a new todo document and enter it in the database
     function addTodo(text) {
+
+        if (text.length <= 0) return;
+
         var todo = {
             title: text,
             completed: false
@@ -46,8 +49,11 @@
     }
 
     function checkboxChanged(todo, event) {
+        // console.log(todo);
+        // console.log(event);
+
         todo.completed = event.target.checked;
-        db.put(todo);
+        db.put(todo) //.then(console.log('registo actualizado'));
     }
 
     // User pressed the delete button for a todo, delete it
